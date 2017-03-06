@@ -445,4 +445,7 @@
 /* Unsupported features */
 #undef CONFIG_USE_IRQ
 
+/* LCD Support */
+#define CONFIG_LCD_TCM
+
 #endif	/* ! __CONFIG_MYD_AM335X_H */

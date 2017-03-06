@@ -318,7 +318,7 @@ static struct module_pin_mux i2c1_pin_mux[] = {
 
 /* Added by MYIR */
 static struct module_pin_mux myir_backlight_mux[] = {
-        {OFFSET(spi0_sclk), (MODE(7))}, /* GPOI0_2, pull down enable, output */
+        {OFFSET(spi0_sclk), (MODE(7)) | PULLUP_EN}, /* GPOI0_2, pull down enable, output */
         {-1},
 };
 static struct module_pin_mux myir_wdt_mux[] = {
@@ -328,6 +328,12 @@ static struct module_pin_mux myir_wdt_mux[] = {
 static struct module_pin_mux myir_e2pwp_mux[] = {
         {OFFSET(emu0), (MODE(7) | PULLUP_EN | RXACTIVE)}, /* GPOI3_7, pull up enable, input */
         {-1},
+};
+
+/* Added by JBO */
+static struct module_pin_mux boot_key_mux[] = {
+    { OFFSET(spi0_d0), (MODE(7) | PULLUP_EN | RXACTIVE) },
+    { -1 },
 };
 
 #ifndef CONFIG_NO_ETH
@@ -721,4 +727,11 @@ void enable_wdt_pin_mux(void)
 void enable_e2pwp_pin_mux(void)
 {
     configure_module_pin_mux(myir_e2pwp_mux);
+}
+
+
+/* JBO */
+void enable_boot_pin_mux(void)
+{
+    configure_module_pin_mux(boot_key_mux);
 }

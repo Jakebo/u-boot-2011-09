@@ -278,6 +278,7 @@ LIBS += common/libcommon.o
 LIBS += lib/libfdt/libfdt.o
 LIBS += api/libapi.o
 LIBS += post/libpost.o
+LIBS += drivers/lcd/liblcd.o
 
 ifeq ($(SOC),ti81xx)
 LIBS += $(CPUDIR)/omap-common/libomap-common.o
