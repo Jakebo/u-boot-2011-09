@@ -468,6 +468,8 @@ void wait_boot_key(void)
 #define GPIO_BASE              0x44E07000 /* GPIO0_BASE */
 #define GPIO_DATAIN            (GPIO_BASE + 0x138)
 #define BOOT_PIN_GPIO_BIT      (1 << 3)
+
+#if 0 /* Disabled boot key as they required */
     int elapse = 0;
     int boot_key_pressed = 0;
 
@@ -484,6 +486,7 @@ void wait_boot_key(void)
         if (elapse > 30)
             break;
     }
+#endif
     enable_backlight_pin_mux();
     __raw_writel(__raw_readl(GPIO0_OE) & ~BL_BIT, GPIO0_OE);
     __raw_writel(__raw_readl(GPIO0_DATAOUT) | BL_BIT, GPIO0_DATAOUT);
